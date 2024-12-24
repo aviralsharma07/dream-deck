@@ -5,7 +5,7 @@ import { ThemeProvider } from "@/components/theme/themeProvider";
 import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "Goal Wall 2025",
+  title: "Dream Deck",
   description: "Share your New Year's resolutions with the world and inspire others. Create beautiful goal cards and join a community of dreamers.",
 };
 

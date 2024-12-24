@@ -1,5 +1,5 @@
 "use client";
-import { Sparkles, Github, Twitter, Linkedin, Globe } from "lucide-react";
+import { Sparkles, Github, Twitter, Linkedin, Globe, PencilIcon } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "./ui/button";
@@ -13,8 +13,8 @@ const links = [
 const Footer = () => {
   const router = useRouter();
   return (
-    <footer className="w-full mt-10 border-1 drop-shadow-md bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 border-t border-neutral-200 dark:border-neutral-800 py-8">
-      <div className="px-8 mx-auto flex flex-col sm:flex-row justify-between items-center">
+    <footer className="w-full border-2 mt-10 border-1 drop-shadow-md bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 border-t border-neutral-200 dark:border-neutral-800 py-8">
+      <div className="px-4 md:px-8 mx-auto flex flex-col sm:flex-row justify-between items-center">
         {/* Left Section */}
         <div className="flex flex-col sm:flex-row items-center gap-4">
           <h2 className="text-lg inline-flex items-center gap-2 font-bold">
@@ -36,9 +36,9 @@ const Footer = () => {
         {/* Right Section */}
         <div className="mt-6 sm:mt-0 flex gap-4 items-center">
           <Button variant="destructive" onClick={() => router.push("/create-card")}>
-            Create Your Dream
+            Create Your Vision Card <PencilIcon className="h-5 w-5" />
           </Button>
-          <Button variant="outline">Random Goal 🎲</Button>
+          {/* <Button variant="outline">Random Goal 🎲</Button> */}
         </div>
       </div>
 

@@ -59,7 +59,7 @@ export function GoalCard({ userName, goals, theme, onGoalRemove, cardRef }: Goal
             <span className={cn("text-lg rounded-sm py-[2px] px-1 font-bold tracking-wider", themeStyle.accent)}>#DreamDeck2025</span>
 
             <p className={cn("text-sm text-center opacity-80", themeStyle.text)}>
-              Create your vision card at <span className={cn("transition-opacity cursor-pointer hover:opacity-75 hover:underline", "text-yellow-500 font-bold")}>dreamdeck.com</span>
+              Create your vision card at <span className={cn("transition-opacity cursor-pointer hover:opacity-75 hover:underline", "text-yellow-500 font-bold")}>dream-deck-mauve.vercel.app</span>
             </p>
           </div>
         </CardFooter>
