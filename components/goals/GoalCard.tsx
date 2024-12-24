@@ -19,8 +19,8 @@ export function GoalCard({ userName, goals, theme, onGoalRemove, cardRef }: Goal
   const themeStyle = cardThemes[theme];
 
   return (
-    <div ref={cardRef} className="inline-block max-w-3xl w-full">
-      <Card className={cn("relative p-8 border-2 transition-all duration-300", themeStyle.background, themeStyle.border)}>
+    <div className="p-10 inline-block max-w-3xl w-full">
+      <Card className={cn("relative p-8 border-2 transition-all duration-300 rounded-none", themeStyle.background, themeStyle.border)} ref={cardRef}>
         <CardHeader>
           <div className="flex items-center justify-between mb-6">
             <div className="space-y-1">
@@ -44,7 +44,7 @@ export function GoalCard({ userName, goals, theme, onGoalRemove, cardRef }: Goal
         <CardContent>
           <div className="space-y-3 mb-8">
             {goals.map((goal) => (
-              <div key={goal.id} className={cn("group flex items-center justify-between gap-4 p-4 rounded-lg transition-all duration-200", "hover:bg-background/10 cursor-pointer", "border border-border/10 backdrop-blur-sm", "transform hover:scale-[1.02]")} onClick={() => onGoalRemove(goal.id)}>
+              <div key={goal.id} className={cn("group flex items-center justify-between gap-4 p-4 rounded-lg transition-all duration-200 bg-background/5", "hover:bg-background/15 cursor-pointer", "border border-border/10 backdrop-blur-sm", "transform hover:scale-[1.02]")} onClick={() => onGoalRemove && onGoalRemove(goal.id)}>
                 <span className={cn("text-base font-medium", themeStyle.text)}>{goal.text}</span>
                 <Badge variant="secondary" className={cn("text-xs px-3 py-1 flex items-center transition-colors", themeStyle.tag)}>
                   <Tag className="w-3 h-3 mr-1.5" />
@@ -59,7 +59,7 @@ export function GoalCard({ userName, goals, theme, onGoalRemove, cardRef }: Goal
             <span className={cn("text-lg rounded-sm py-[2px] px-1 font-bold tracking-wider", themeStyle.accent)}>#DreamDeck2025</span>
 
             <p className={cn("text-sm text-center opacity-80", themeStyle.text)}>
-              Create your vision card at <span className={cn("font-medium transition-opacity cursor-pointer hover:opacity-75 hover:underline", themeStyle.text)}>dreamdeck.com</span>
+              Create your vision card at <span className={cn("transition-opacity cursor-pointer hover:opacity-75 hover:underline", "text-yellow-500 font-bold")}>dreamdeck.com</span>
             </p>
           </div>
         </CardFooter>

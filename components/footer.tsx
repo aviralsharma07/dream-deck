@@ -20,7 +20,7 @@ const Footer = () => {
           <h2 className="text-lg inline-flex items-center gap-2 font-bold">
             <Sparkles className="h-6 w-6 text-yellow-500" /> DreamDeck
           </h2>
-          <p className="italic text-sm opacity-70">"Dream it. Write it. Crush it. Repeat."</p>
+          <p className="italic text-sm opacity-70">&quot;Dream it. Write it. Crush it. Repeat.&quot;</p>
         </div>
 
         {/* Middle Section */}

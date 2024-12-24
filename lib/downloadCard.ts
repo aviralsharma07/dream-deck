@@ -5,7 +5,7 @@ export const downloadCard = async (cardRef: React.RefObject<HTMLDivElement>, use
   try {
     // Create a canvas from the card element
     const canvas = await html2canvas(cardRef.current, {
-      scale: 5, // Higher scale for better quality
+      scale: 10,
       logging: false,
       useCORS: true,
       backgroundColor: null,

@@ -9,7 +9,7 @@ export function Header() {
       <div className="container flex h-14 items-center">
         <Link href="/" className="flex items-center space-x-2">
           <Sparkles className="h-6 w-6 text-yellow-500" />
-          <span className="font-bold">Dream Deck</span>
+          <span className="font-bold">DreamDeck</span>
         </Link>
         <nav className="flex items-center space-x-6 ml-14">
           <Link href="/explore" className="text-sm font-medium transition-colors hover:text-primary">

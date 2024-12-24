@@ -2,30 +2,6 @@
 
 import { GoalCard, GoalCardProps } from "../goals/GoalCard";
 import { motion } from "framer-motion";
-import { type Goal } from "@/app/create-card/types";
-
-// const sampleGoals: Goal[] = []
-
-// const sampleCards: GoalCardProps[] = [
-//   {
-//     userName: "John Doe",
-//     goals: [
-//       { id: "1", text: "Learn React", tag: "Tech" },
-//       { id: "2", text: "Start a blog", tag: "Writing" },
-//       { id: "3", text: "Read 100 books", tag: "Reading" },
-//     ],
-//     theme: "superhero",
-//   },
-//   {
-//     userName: "Jane Doe",
-//     goals: [
-//       { id: "4", text: "Learn Vue", tag: "Tech" },
-//       { id: "5", text: "Start a podcast", tag: "Audio" },
-//       { id: "6", text: "Read 50 books", tag: "Reading" },
-//     ],
-//     theme: "cyberpunk",
-//   },
-// ];
 
 const sampleCards: GoalCardProps[] = [
   {
@@ -118,7 +94,7 @@ export function InfiniteCards() {
           {[...Array(2)].map((_, setIndex) => (
             <div key={setIndex} className="flex gap-6">
               {sampleCards.map((card, index) => (
-                <div key={`${setIndex}-${index}`} className="w-[350px] shrink-0">
+                <div key={`${setIndex}-${index}`} className=" shrink-0">
                   <GoalCard userName={card.userName} goals={card.goals} theme={card.theme} />
                 </div>
               ))}
