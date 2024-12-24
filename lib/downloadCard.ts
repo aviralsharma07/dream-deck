@@ -1,15 +1,17 @@
 import html2canvas from "html2canvas";
-import { cardThemes } from "@/components/goals/cardThemes";
 
-const downloadCard = async (cardRef: React.RefObject<HTMLDivElement>, userName: string, theme: keyof typeof cardThemes) => {
+export const downloadCard = async (cardRef: React.RefObject<HTMLDivElement>, userName: string) => {
   if (!cardRef.current) return;
   try {
     // Create a canvas from the card element
     const canvas = await html2canvas(cardRef.current, {
-      scale: 2, // Higher scale for better quality
+      scale: 5, // Higher scale for better quality
       logging: false,
       useCORS: true,
       backgroundColor: null,
+      removeContainer: true,
+      windowWidth: cardRef.current.scrollWidth,
+      windowHeight: cardRef.current.scrollHeight,
     });
     // Convert canvas to blob
     canvas.toBlob(

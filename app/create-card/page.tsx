@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { RefObject, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -9,6 +9,7 @@ import type { Goal } from "./types";
 // import { GoalCard } from "@/components/goals/GoalCard";
 import { GoalCard } from "@/components/goals/Card";
 import { cardThemes } from "@/components/goals/cardThemes";
+import { downloadCard } from "@/lib/downloadCard";
 
 const tags = ["Career", "Health", "Personal", "Financial", "Education", "Travel", "Relationships", "Spiritual"];
 
@@ -30,8 +31,8 @@ function GoalCardCreator() {
   const [goals, setGoals] = useState<Goal[]>([]);
   const [newGoal, setNewGoal] = useState("");
   const [selectedTag, setSelectedTag] = useState("");
-  // const themeType = keyof typeof cardThemes;
   const [theme, setTheme] = useState<ThemeType>("superhero");
+  const cardRef = useRef<HTMLDivElement>(null);
 
   const addGoal = () => {
     if (newGoal.trim() && selectedTag) {
@@ -45,11 +46,12 @@ function GoalCardCreator() {
     setGoals(goals.filter((goal) => goal.id !== id));
   };
 
-  const downloadCard = () => {
-    // TODO: Implement card download functionality
+  const handleDownloadCard = () => {
+    downloadCard(cardRef as RefObject<HTMLDivElement>, userName);
     console.log("Downloading card...");
   };
 
+  console.log("is Download Possible", !userName || goals.length === 0);
   return (
     <div className="min-h-screen p-6 flex flex-col items-center gap-8">
       <div className="w-full max-w-3xl space-y-6">
@@ -94,9 +96,9 @@ function GoalCardCreator() {
           </div>
         </div>
 
-        <GoalCard userName={userName || "Your Name"} goals={goals} theme={theme} onGoalRemove={removeGoal} />
+        <GoalCard userName={userName || "Your Name"} goals={goals} theme={theme} onGoalRemove={removeGoal} cardRef={cardRef} />
 
-        <Button className="w-full" variant="destructive" onClick={downloadCard} disabled={!userName || goals.length === 0}>
+        <Button className="w-full" variant="destructive" onClick={handleDownloadCard}>
           <Download className="w-4 h-4 mr-2" />
           Download Your Vision Card
         </Button>

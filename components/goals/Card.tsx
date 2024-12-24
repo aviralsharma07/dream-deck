@@ -6,22 +6,21 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Goal } from "@/app/create-card/types";
 import { Sparkles, Tag } from "lucide-react";
 import { Badge } from "../ui/badge";
-import { useRef } from "react";
 
 interface GoalCardProps {
   userName: string;
   goals: Goal[];
   theme: keyof typeof cardThemes;
   onGoalRemove: (id: string) => void;
+  cardRef: React.RefObject<HTMLDivElement | null>;
 }
 
-export function GoalCard({ userName, goals, theme, onGoalRemove }: GoalCardProps) {
+export function GoalCard({ userName, goals, theme, onGoalRemove, cardRef }: GoalCardProps) {
   const themeStyle = cardThemes[theme];
-  const cardRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div>
-      <Card className={cn("relative p-8 border-2 transition-all duration-300 overflow-hidden", themeStyle.background, themeStyle.border, "before:absolute before:inset-0 before:bg-gradient-to-b before:from-background/10 before:to-background/5 before:pointer-events-none")}>
+    <div ref={cardRef} className="inline-block max-w-3xl w-full">
+      <Card className={cn("relative p-8 border-2 transition-all duration-300", themeStyle.background, themeStyle.border)}>
         <CardHeader>
           <div className="flex items-center justify-between mb-6">
             <div className="space-y-1">
@@ -47,7 +46,7 @@ export function GoalCard({ userName, goals, theme, onGoalRemove }: GoalCardProps
             {goals.map((goal) => (
               <div key={goal.id} className={cn("group flex items-center justify-between gap-4 p-4 rounded-lg transition-all duration-200", "hover:bg-background/10 cursor-pointer", "border border-border/10 backdrop-blur-sm", "transform hover:scale-[1.02]")} onClick={() => onGoalRemove(goal.id)}>
                 <span className={cn("text-base font-medium", themeStyle.text)}>{goal.text}</span>
-                <Badge variant="secondary" className={cn("text-xs px-3 py-1 transition-colors", themeStyle.tag)}>
+                <Badge variant="secondary" className={cn("text-xs px-3 py-1 flex items-center transition-colors", themeStyle.tag)}>
                   <Tag className="w-3 h-3 mr-1.5" />
                   {goal.tag}
                 </Badge>
