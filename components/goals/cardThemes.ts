@@ -34,4 +34,25 @@ export const cardThemes = {
     accent: "bg-white/90 text-teal-900 font-bold",
     tag: "bg-white/10 text-white/90 border-white/20",
   },
+  neon: {
+    background: "bg-black",
+    text: "font-['Rubik'] text-destructive",
+    border: "border-destructive/50 shadow-lg shadow-destructive/20",
+    accent: "bg-destructive text-black uppercase tracking-widest",
+    tag: "bg-destructive/10 text-destructive border-destructive/30",
+  },
+  cosmic: {
+    background: "bg-gradient-to-br from-indigo-950 via-purple-900 to-indigo-900",
+    text: "font-['Inter'] text-indigo-200",
+    border: "border-indigo-500/20 shadow-lg shadow-indigo-500/10",
+    accent: "bg-indigo-300 text-indigo-950 font-medium",
+    tag: "bg-indigo-300/10 text-indigo-300 border-indigo-300/20",
+  },
+  minimal: {
+    background: "bg-white dark:bg-gray-950",
+    text: "font-['Inter'] text-gray-900 dark:text-gray-100",
+    border: "border-gray-200 dark:border-gray-800 shadow-sm",
+    accent: "bg-gray-900 dark:bg-gray-100 text-gray-100 dark:text-gray-900",
+    tag: "bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 border-gray-200 dark:border-gray-800",
+  },
 } as const;
