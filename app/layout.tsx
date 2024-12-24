@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { ThemeProvider } from "@/components/theme/themeProvider";
+import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "Goal Wall 2025",
@@ -19,6 +20,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Header />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

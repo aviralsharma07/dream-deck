@@ -3,67 +3,67 @@
 import { cn } from "@/lib/utils";
 import { cardThemes } from "./cardThemes";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Heart, Share2, Plus, Sparkles } from "lucide-react";
-import { motion } from "framer-motion";
-import { GoalTag } from "./goalTag";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { Goal } from "@/app/create-card/types";
+import { Sparkles, Tag } from "lucide-react";
+import { Badge } from "../ui/badge";
 
-interface Goal {
-  text: string;
-  tags: string[];
-}
-
-interface EnhancedGoalCardProps {
-  theme: keyof typeof cardThemes;
+export interface GoalCardProps {
+  userName: string;
   goals: Goal[];
-  likes?: number;
-  achieved?: number;
+  theme: keyof typeof cardThemes;
+  onGoalRemove?: (id: string) => void;
+  cardRef?: React.RefObject<HTMLDivElement | null>;
 }
 
-export function GoalCard({ theme, goals, likes = 0, achieved = 0 }: EnhancedGoalCardProps) {
+export function GoalCard({ userName, goals, theme, onGoalRemove, cardRef }: GoalCardProps) {
   const themeStyle = cardThemes[theme];
 
   return (
-    <motion.div whileHover={{ scale: 1.02, rotate: 0.5 }} whileTap={{ scale: 0.98 }} className="relative">
-      <Card className={cn("relative border-2 transition-all duration-300 overflow-hidden", themeStyle.background, themeStyle.border, themeStyle.paper)}>
-        <CardHeader className="space-y-2">
-          <div className="flex items-center gap-2">
-            <GoalTag text={theme} className={themeStyle.accent} />
-            <GoalTag text={`${achieved}/${goals.length} Achieved`} className={themeStyle.tag} />
+    <div ref={cardRef} className="inline-block max-w-3xl w-full">
+      <Card className={cn("relative p-8 border-2 transition-all duration-300", themeStyle.background, themeStyle.border)}>
+        <CardHeader>
+          <div className="flex items-center justify-between mb-6">
+            <div className="space-y-1">
+              <h3 className={cn("text-xl font-semibold", themeStyle.text)}>{userName}</h3>
+              <span className={cn("text-sm opacity-80", themeStyle.text)}>
+                {new Date().toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </span>
+            </div>
+            <Sparkles className={cn("w-6 h-6", themeStyle.text)} />
+          </div>
+          <div className="mb-8">
+            <h2 className={cn("text-2xl font-bold tracking-tight", themeStyle.text)}>2025 Vision Board</h2>
           </div>
         </CardHeader>
+
+        {/* Goals Section */}
         <CardContent>
-          <ScrollArea className="h-[200px] pr-4">
-            <div className="space-y-4">
-              {goals.map((goal, index) => (
-                <div key={index} className="space-y-2">
-                  <p className={cn("text-lg relative", themeStyle.text)}>{goal.text}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {goal.tags.map((tag, tagIndex) => (
-                      <GoalTag key={tagIndex} text={tag} className={themeStyle.tag} />
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </ScrollArea>
+          <div className="space-y-3 mb-8">
+            {goals.map((goal) => (
+              <div key={goal.id} className={cn("group flex items-center justify-between gap-4 p-4 rounded-lg transition-all duration-200", "hover:bg-background/10 cursor-pointer", "border border-border/10 backdrop-blur-sm", "transform hover:scale-[1.02]")} onClick={() => onGoalRemove(goal.id)}>
+                <span className={cn("text-base font-medium", themeStyle.text)}>{goal.text}</span>
+                <Badge variant="secondary" className={cn("text-xs px-3 py-1 flex items-center transition-colors", themeStyle.tag)}>
+                  <Tag className="w-3 h-3 mr-1.5" />
+                  {goal.tag}
+                </Badge>
+              </div>
+            ))}
+          </div>
         </CardContent>
-        <CardFooter className="flex justify-between">
-          <Button variant="ghost" size="sm" className={cn("gap-1 group", themeStyle.text)}>
-            <Heart className="w-4 h-4 group-hover:fill-current" />
-            <span>{likes}</span>
-          </Button>
-          <div className="flex gap-2">
-            <Button variant="ghost" size="sm" className={cn("gap-1", themeStyle.text)}>
-              <Plus className="w-4 h-4" />
-            </Button>
-            <Button variant="ghost" size="sm" className={cn("gap-1", themeStyle.text)}>
-              <Share2 className="w-4 h-4" />
-            </Button>
+        <CardFooter className="relative z-10 pt-4 border-t border-border/10">
+          <div className="flex flex-col items-center mx-auto gap-3">
+            <span className={cn("text-lg rounded-sm py-[2px] px-1 font-bold tracking-wider", themeStyle.accent)}>#DreamDeck2025</span>
+
+            <p className={cn("text-sm text-center opacity-80", themeStyle.text)}>
+              Create your vision card at <span className={cn("font-medium transition-opacity cursor-pointer hover:opacity-75 hover:underline", themeStyle.text)}>dreamdeck.com</span>
+            </p>
           </div>
         </CardFooter>
       </Card>
-    </motion.div>
+    </div>
   );
 }

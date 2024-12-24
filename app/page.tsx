@@ -1,8 +1,11 @@
+"use client";
 import { InfiniteCards } from "@/components/home/infiniteCards";
 import { Button } from "@/components/ui/button";
 import { Sparkles } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
   return (
     <main className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-16">
@@ -10,7 +13,7 @@ export default function Home() {
           <h1 className="font-calsans text-4xl md:text-6xl lg:text-7xl">Dream Deck 2025</h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">Share your New Year&apos;s resolutions with the world and inspire others. Create beautiful goal cards and join a community of dreamers.</p>
           <div className="flex gap-4">
-            <Button size="lg" variant="destructive">
+            <Button size="lg" variant="destructive" onClick={() => router.push("/create-card")}>
               <Sparkles className="w-4 h-4" />
               Get Started
             </Button>

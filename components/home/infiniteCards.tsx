@@ -1,71 +1,104 @@
 "use client";
 
-import { GoalCard } from "../goals/GoalCard";
+import { GoalCard, GoalCardProps } from "../goals/GoalCard";
 import { motion } from "framer-motion";
+import { type Goal } from "@/app/create-card/types";
 
-const sampleGoals = [
+// const sampleGoals: Goal[] = []
+
+// const sampleCards: GoalCardProps[] = [
+//   {
+//     userName: "John Doe",
+//     goals: [
+//       { id: "1", text: "Learn React", tag: "Tech" },
+//       { id: "2", text: "Start a blog", tag: "Writing" },
+//       { id: "3", text: "Read 100 books", tag: "Reading" },
+//     ],
+//     theme: "superhero",
+//   },
+//   {
+//     userName: "Jane Doe",
+//     goals: [
+//       { id: "4", text: "Learn Vue", tag: "Tech" },
+//       { id: "5", text: "Start a podcast", tag: "Audio" },
+//       { id: "6", text: "Read 50 books", tag: "Reading" },
+//     ],
+//     theme: "cyberpunk",
+//   },
+// ];
+
+const sampleCards: GoalCardProps[] = [
   {
-    theme: "superhero" as const,
+    userName: "Badshah",
     goals: [
-      {
-        text: "Train like a superhero and run a marathon! 🏃‍♂️",
-        tags: ["Fitness", "Challenge"],
-      },
+      { id: "1", text: "Drop the next #1 hit single", tag: "Music" },
+      { id: "2", text: "Master making 5-star butter chicken", tag: "Cooking" },
+      { id: "3", text: "Collaborate with an international artist", tag: "Music" },
     ],
-    likes: 156,
-    achieved: 1,
+    theme: "neon",
   },
   {
-    theme: "zen" as const,
+    userName: "Trump",
     goals: [
-      {
-        text: "Practice mindfulness meditation daily 🧘‍♀️",
-        tags: ["Wellness"],
-      },
-      {
-        text: "Create a minimalist living space ✨",
-        tags: ["Lifestyle"],
-      },
+      { id: "4", text: "Build the world’s greatest golf course", tag: "Sports" },
+      { id: "5", text: "Write a best-selling memoir", tag: "Writing" },
+      { id: "6", text: "Launch a social media platform that actually works", tag: "Tech" },
     ],
-    likes: 89,
-    achieved: 0,
+    theme: "superhero",
   },
   {
-    theme: "cyberpunk" as const,
+    userName: "Hardik",
     goals: [
-      {
-        text: "Master cybersecurity skills 🔒",
-        tags: ["Tech", "Learning"],
-      },
+      { id: "7", text: "Score a double century in ODIs", tag: "Cricket" },
+      { id: "8", text: "Start a fitness YouTube channel", tag: "Fitness" },
+      { id: "9", text: "Lead India to win the World Cup", tag: "Sports" },
     ],
-    likes: 234,
-    achieved: 1,
+    theme: "minimal",
   },
   {
-    theme: "parchment" as const,
+    userName: "Michael",
     goals: [
-      {
-        text: "Write a fantasy novel ✍️",
-        tags: ["Creative"],
-      },
-      {
-        text: "Read 50 classic books 📚",
-        tags: ["Reading"],
-      },
+      { id: "10", text: "Choreograph a viral dance trend", tag: "Dance" },
+      { id: "11", text: "Learn to moonwalk underwater", tag: "Fun" },
+      { id: "12", text: "Direct a short film about kindness", tag: "Art" },
     ],
-    likes: 167,
-    achieved: 0,
+    theme: "aurora",
   },
   {
-    theme: "aurora" as const,
+    userName: "Ryan Gosling",
     goals: [
-      {
-        text: "See the Northern Lights in Iceland 🌌",
-        tags: ["Travel", "Adventure"],
-      },
+      { id: "13", text: "Learn to play the piano for a role", tag: "Music" },
+      { id: "14", text: "Star in a movie about AI falling in love", tag: "Acting" },
+      { id: "15", text: "Win an Oscar with a killer monologue", tag: "Awards" },
     ],
-    likes: 312,
-    achieved: 0,
+    theme: "cosmic",
+  },
+  {
+    userName: "Ameya",
+    goals: [
+      { id: "16", text: "Write a novel that redefines sci-fi", tag: "Writing" },
+      { id: "17", text: "Visit every country in Europe", tag: "Travel" },
+      { id: "18", text: "Start a podcast about underappreciated tech innovations", tag: "Audio" },
+    ],
+    theme: "cyberpunk",
+  },
+  {
+    userName: "Thorfinn",
+    goals: [
+      { id: "19", text: "Rediscover the land of Vinland", tag: "Adventure" },
+      { id: "20", text: "Master swordsmanship with style", tag: "Skills" },
+      { id: "21", text: "Learn to bake Viking bread", tag: "Cooking" },
+    ],
+    theme: "parchment",
+  },
+  {
+    userName: "Loki",
+    goals: [
+      { id: "22", text: "Outwit Thor in a game of chess", tag: "Fun" },
+      { id: "23", text: "Rule at least one realm (preferably Asgard)", tag: "Power" },
+      { id: "24", text: "Learn to cook pasta without burning it", tag: "Cooking" },
+    ],
+    theme: "zen",
   },
 ];
 
@@ -84,9 +117,9 @@ export function InfiniteCards() {
         >
           {[...Array(2)].map((_, setIndex) => (
             <div key={setIndex} className="flex gap-6">
-              {sampleGoals.map((goal, index) => (
+              {sampleCards.map((card, index) => (
                 <div key={`${setIndex}-${index}`} className="w-[350px] shrink-0">
-                  <GoalCard {...goal} />
+                  <GoalCard userName={card.userName} goals={card.goals} theme={card.theme} />
                 </div>
               ))}
             </div>

@@ -7,11 +7,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { PlusCircle, Download } from "lucide-react";
 import type { Goal } from "./types";
 // import { GoalCard } from "@/components/goals/GoalCard";
-import { GoalCard } from "@/components/goals/Card";
+import { GoalCard } from "@/components/goals/GoalCard";
 import { cardThemes } from "@/components/goals/cardThemes";
 import { downloadCard } from "@/lib/downloadCard";
 
-const tags = ["Career", "Health", "Personal", "Financial", "Education", "Travel", "Relationships", "Spiritual"];
+const tags = ["Career", "Health", "Personal", "Financial", "Education", "Travel", "Relationships", "Spiritual", "Writing", "Reading", "Sports"];
 
 const themes = [
   { id: "neon", name: "Neon Dreams" },
