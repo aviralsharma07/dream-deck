@@ -23,7 +23,7 @@ export default function Home() {
               <Sparkles className="w-4 h-4" />
               Get Started
             </Button>
-            <Button variant="outline" size="lg">
+            <Button variant="outline" size="lg" onClick={() => router.push("/vision-wall")}>
               Explore Goals
             </Button>
           </div>

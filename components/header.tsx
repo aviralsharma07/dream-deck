@@ -12,10 +12,10 @@ export function Header() {
           <span className="font-bold">DreamDeck</span>
         </Link>
         <nav className="flex max-md:hidden items-center space-x-6 ml-14">
-          <Link href="/explore" className="text-sm font-medium transition-colors hover:text-primary">
+          {/* <Link href="/explore" className="text-sm font-medium transition-colors hover:text-primary">
             Explore
-          </Link>
-          <Link href="/trending" className="text-sm font-medium transition-colors hover:text-primary">
+          </Link> */}
+          <Link href="/vision-wall" className="text-sm font-medium transition-colors hover:text-primary">
             Trending
           </Link>
         </nav>
