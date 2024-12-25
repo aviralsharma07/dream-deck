@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { PlusCircle, Download } from "lucide-react";
 import type { Goal } from "./types";
-// import { GoalCard } from "@/components/goals/GoalCard";
 import { GoalCard } from "@/components/goals/GoalCard";
 import { cardThemes } from "@/components/goals/cardThemes";
 import { downloadCard } from "@/lib/downloadCard";
@@ -46,12 +45,24 @@ function GoalCardCreator() {
     setGoals(goals.filter((goal) => goal.id !== id));
   };
 
-  const handleDownloadCard = () => {
+  const handleDownloadCard = async () => {
     downloadCard(cardRef as RefObject<HTMLDivElement>, userName);
-    console.log("Downloading card...");
+    try {
+      const response = await fetch("/api/saveGoalCard", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username: userName, goals, theme }),
+      });
+
+      const data = await response.json();
+      console.log("Saved goal card:", data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  console.log("is Download Possible", !userName || goals.length === 0);
   return (
     <div className="min-h-screen p-6 flex flex-col items-center gap-8">
       <div className="w-full max-w-3xl space-y-6">
@@ -96,7 +107,7 @@ function GoalCardCreator() {
           </div>
         </div>
 
-        <GoalCard userName={userName || "Your Name"} goals={goals} theme={theme} onGoalRemove={removeGoal} cardRef={cardRef} />
+        <GoalCard username={userName || "Your Name"} goals={goals} theme={theme} onGoalRemove={removeGoal} cardRef={cardRef} />
 
         <Button className="w-full" variant="destructive" onClick={handleDownloadCard}>
           <Download className="w-4 h-4 mr-2" />

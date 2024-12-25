@@ -8,14 +8,16 @@ import { Sparkles, Tag } from "lucide-react";
 import { Badge } from "../ui/badge";
 
 export interface GoalCardProps {
-  userName: string;
+  id?: string;
+  username: string;
   goals: Goal[];
   theme: keyof typeof cardThemes;
+  likes?: number;
   onGoalRemove?: (id: string) => void;
   cardRef?: React.RefObject<HTMLDivElement | null>;
 }
 
-export function GoalCard({ userName, goals, theme, onGoalRemove, cardRef }: GoalCardProps) {
+export function GoalCard({ username, goals, theme, onGoalRemove, cardRef }: GoalCardProps) {
   const themeStyle = cardThemes[theme];
 
   return (
@@ -24,7 +26,7 @@ export function GoalCard({ userName, goals, theme, onGoalRemove, cardRef }: Goal
         <CardHeader>
           <div className="flex items-center justify-between mb-6">
             <div className="space-y-1">
-              <h3 className={cn("text-xl font-semibold", themeStyle.text)}>{userName}</h3>
+              <h3 className={cn("text-xl font-semibold", themeStyle.text)}>{username}</h3>
               <span className={cn("text-sm opacity-80", themeStyle.text)}>
                 {new Date().toLocaleDateString("en-US", {
                   year: "numeric",

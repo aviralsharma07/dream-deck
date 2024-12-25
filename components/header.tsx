@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./theme/themeToggle";
 
 export function Header() {
@@ -21,9 +21,9 @@ export function Header() {
         </nav>
         <div className="max-md:hidden ml-auto flex items-center space-x-4">
           <ThemeToggle />
-          <Button size="sm" variant="destructive">
+          {/* <Button size="sm" variant="destructive">
             Sign In
-          </Button>
+          </Button> */}
         </div>
       </div>
     </header>

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const sampleCards: GoalCardProps[] = [
   {
-    userName: "Badshah",
+    username: "Badshah",
     goals: [
       { id: "1", text: "Drop the next #1 hit single", tag: "Music" },
       { id: "2", text: "Master making 5-star butter chicken", tag: "Cooking" },
@@ -14,7 +14,7 @@ const sampleCards: GoalCardProps[] = [
     theme: "neon",
   },
   {
-    userName: "Trump",
+    username: "Trump",
     goals: [
       { id: "4", text: "Build the world’s greatest golf course", tag: "Sports" },
       { id: "5", text: "Write a best-selling memoir", tag: "Writing" },
@@ -23,7 +23,7 @@ const sampleCards: GoalCardProps[] = [
     theme: "superhero",
   },
   {
-    userName: "Hardik",
+    username: "Hardik",
     goals: [
       { id: "7", text: "Score a double century in ODIs", tag: "Cricket" },
       { id: "8", text: "Start a fitness YouTube channel", tag: "Fitness" },
@@ -32,7 +32,7 @@ const sampleCards: GoalCardProps[] = [
     theme: "minimal",
   },
   {
-    userName: "Michael",
+    username: "Michael",
     goals: [
       { id: "10", text: "Choreograph a viral dance trend", tag: "Dance" },
       { id: "11", text: "Learn to moonwalk underwater", tag: "Fun" },
@@ -41,7 +41,7 @@ const sampleCards: GoalCardProps[] = [
     theme: "aurora",
   },
   {
-    userName: "Ryan Gosling",
+    username: "Ryan Gosling",
     goals: [
       { id: "13", text: "Learn to play the piano for a role", tag: "Music" },
       { id: "14", text: "Star in a movie about AI falling in love", tag: "Acting" },
@@ -50,7 +50,7 @@ const sampleCards: GoalCardProps[] = [
     theme: "cosmic",
   },
   {
-    userName: "Ameya",
+    username: "Ameya",
     goals: [
       { id: "16", text: "Write a novel that redefines sci-fi", tag: "Writing" },
       { id: "17", text: "Visit every country in Europe", tag: "Travel" },
@@ -59,7 +59,7 @@ const sampleCards: GoalCardProps[] = [
     theme: "cyberpunk",
   },
   {
-    userName: "Thorfinn",
+    username: "Thorfinn",
     goals: [
       { id: "19", text: "Rediscover the land of Vinland", tag: "Adventure" },
       { id: "20", text: "Master swordsmanship with style", tag: "Skills" },
@@ -68,7 +68,7 @@ const sampleCards: GoalCardProps[] = [
     theme: "parchment",
   },
   {
-    userName: "Loki",
+    username: "Loki",
     goals: [
       { id: "22", text: "Outwit Thor in a game of chess", tag: "Fun" },
       { id: "23", text: "Rule at least one realm (preferably Asgard)", tag: "Power" },
@@ -95,7 +95,7 @@ export function InfiniteCards() {
             <div key={setIndex} className="flex gap-6">
               {sampleCards.map((card, index) => (
                 <div key={`${setIndex}-${index}`} className=" shrink-0">
-                  <GoalCard userName={card.userName} goals={card.goals} theme={card.theme} />
+                  <GoalCard username={card.username} goals={card.goals} theme={card.theme} />
                 </div>
               ))}
             </div>
