@@ -3,6 +3,7 @@ import "./globals.css";
 import { Header } from "@/components/header";
 import { ThemeProvider } from "@/components/theme/themeProvider";
 import Footer from "@/components/footer";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "Dream Deck",
@@ -20,6 +21,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Header />
           {children}
+          <Analytics />
           <Footer />
         </ThemeProvider>
       </body>
